@@ -19,7 +19,7 @@ initial_capital = float(input("Enter total portfolio capital: "))
 max_portfolio_loss_pct = float(input("Max portfolio loss % before stop (e.g. 20): ")) / 100
 max_drawdown_pct = float(input("Max drawdown % allowed (e.g. 15): ")) / 100
 
-transaction_cost_rate = 0.005   # 50 bps
+transaction_cost_rate = 0.000005   # 50 bps
 vol_target_annual = 0.15
 
 # ============================================================
@@ -35,7 +35,7 @@ universe = [
 data = yf.download(
     universe,
     start='2023-01-01',
-    end='2026-01-01',
+    end='2026-10-07',
     auto_adjust=True,
     progress=False
 )
@@ -117,9 +117,9 @@ is_stationary = pvalue < 0.05
 print("\nTrain Period Cointegration p-value:", pvalue)
 print("Stationary Regime (Train)?", is_stationary)
 
-# ============================================================
+# ==========
 # 7. SIGNALS
-# ============================================================
+# ========================
 
 positions = pd.DataFrame(index=prices.index, columns=[asset1, asset2])
 positions[:] = 0
